@@ -11,6 +11,8 @@ export class LoginPage extends BasePage {
     readonly loginButton: Locator;
     readonly usernameHeader: Locator;
     readonly invalidCredAlert: Locator;
+    readonly usernameRequiredMessage: Locator;
+    readonly passwordRequiredMessage: Locator;
     
 
     constructor(page: Page) {
@@ -20,6 +22,8 @@ export class LoginPage extends BasePage {
         this.loginButton = page.getByRole('button', { name: 'Login' });
         this.usernameHeader = page.getByRole('heading',{name: 'Login'});
         this.invalidCredAlert = page.getByRole('alert');
+        this.usernameRequiredMessage = page.locator('.oxd-input-group').filter({hasText: 'Username'}).getByText('Required');
+        this.passwordRequiredMessage = page.locator('.oxd-input-group').filter({ hasText: 'Password' }).getByText('Required');
         
     }
 
